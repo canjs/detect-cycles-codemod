@@ -1,0 +1,17 @@
+{
+  "name": "detect-cycles-codemod",
+  "version": "1.0.0",
+  "description": "Landscaper task to add cycle detection to an NPM package",
+  "main": "detect-cycles-codemod.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "CanJS",
+    "landscaper",
+    "cycle",
+    "detection"
+  ],
+  "author": "Bitovi",
+  "license": "MIT"
+}
