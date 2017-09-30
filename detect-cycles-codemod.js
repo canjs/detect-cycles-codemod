@@ -31,7 +31,7 @@ module.exports = {
 		// Install nocycle as a dev dependency.  Resove a Promise when finished.
 		var installs = function() { 
 			return new Promise(function(resolve, reject) {
-				exec("npm install --save-dev detect-cyclic-packages", function(error) {
+				exec("npm install --save-dev detect-cyclic-packages", { cwd: directory }, function(error) {
 					error ? reject(error) : resolve();
 				});
 			});
