@@ -1,6 +1,6 @@
 {
   "name": "detect-cycles-codemod",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Landscaper task to add cycle detection to an NPM package",
   "main": "detect-cycles-codemod.js",
   "scripts": {
