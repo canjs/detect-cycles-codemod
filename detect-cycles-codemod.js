@@ -29,14 +29,16 @@ module.exports = {
 		});
 
 		// Install nocycle as a dev dependency.  Resove a Promise when finished.
-		var installs = new Promise(function(resolve, reject) {
-			exec("npm install --save-dev detect-cyclic-packages", function(error) {
+		var installs = function() { 
+			return new Promise(function(resolve, reject) {
+				exec("npm install --save-dev detect-cyclic-packages", function(error) {
 					error ? reject(error) : resolve();
+				});
 			});
-		});
+		};
 
 		// Return control to landscaper when everything finishes or something fails.
-		return Promise.all([writePackageJson, installs]).catch(function(err) {
+		return writePackageJson.then(installs).catch(function(err) {
 			console.error(err);
 		});
 	}
