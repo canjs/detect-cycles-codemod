@@ -14,8 +14,8 @@ module.exports = {
 
 		// We've read in package.json into an object.  See if the detect-cycle script exists on the scripts object
 		//  if not, add it to the scripts and edit the preversion script to run it.
-		if(!packageJson.scripts["detect-cycle"]) {
-			packageJson.scripts["detect-cycle"] = "detect-cyclic-packages";
+		if(!packageJson.scripts["detect-cycle"] || !/--ignore.*done-serve/.test(packageJson.scripts["detect-cycle"])) {
+			packageJson.scripts["detect-cycle"] = "detect-cyclic-packages --ignore done-serve";
 			if(!~packageJson.scripts.test.indexOf("detect-cycle")) {
 				packageJson.scripts.test = "npm run detect-cycle && " + packageJson.scripts.test;
 			}
@@ -31,7 +31,7 @@ module.exports = {
 		// Install nocycle as a dev dependency.  Resove a Promise when finished.
 		var installs = function() { 
 			return new Promise(function(resolve, reject) {
-				exec("npm install --save-dev detect-cyclic-packages", { cwd: directory }, function(error) {
+				exec("npm install --save-dev detect-cyclic-packages@latest", { cwd: directory }, function(error) {
 					error ? reject(error) : resolve();
 				});
 			});
